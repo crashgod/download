@@ -1,0 +1,26 @@
+<h3>Crashgod "All-In Strategy" Simulator</h3>
+Enter Starting Amount ($): <input type="text" id="nStartingAmt"> <br><br>
+Enter Auto Cashout: <input type="text" id="nAutoCashout"> <br><br>
+Enter Run Per Day: <input type="text" id="nRunPerDay"> <br><br>
+Enter Days to Run: <input type="text" id="nDayToRun"> <br><br>
+<input type="button" id="bRun1" onclick="getAllInResults();" value="Run"/><br><hr>
+Result: Ending Amount = <input type="text" id="nEndingAmt" value="">
+
+<script type="text/javascript">
+     function getAllInResults(){
+          var nStartingAmt = document.getElementById('nStartingAmt').value;
+          var nAutoCashout = document.getElementById('nAutoCashout').value;
+          var nRunPerDay = document.getElementById('nRunPerDay').value;
+          var nDayToRun = document.getElementById('nDayToRun').value;
+
+          var nTotalRun = nRunPerDay * nDayToRun;
+          
+          var nEndingAmt = nStartingAmt;
+          
+          for (var i = 0; i < nTotalRun; i++) {
+              nEndingAmt = nEndingAmt * nAutoCashout;    
+          }
+
+          document.getElementById("nEndingAmt").value = nEndingAmt;
+     }
+</script>

@@ -1,0 +1,34 @@
+<h3>Crashgod Martingale Simulator</h3>
+Enter Number of run: <input type="text" id="nNumberOfRun"> <br>
+Enter Winning number (Between 0 - 10000): <input type="text" id="nWinningNumber" value="5125"> <br>
+<input type="button" id="bRun1" onclick="getHighestStreak();" value="Run"/><br><hr>
+Result: Longest Losing Streak = <input type="text" id="nHighestLosingStreaks" value="">
+
+<br><br>
+<b>Fun Facts</b>
+<br>- From my calculation, Roobet Dice can about 165,600 times per day or about 60,444,000 times a year (if you run automated non stop 24/7)
+
+<script type="text/javascript">
+     function getHighestStreak(){
+          var nNumberOfRun = document.getElementById('nNumberOfRun').value;
+          var nWinningNumber = document.getElementById('nWinningNumber').value;
+          var nHighestLosingStreaks = 0;
+          var nCurLosingStreaks = 0;
+
+          for (var i = 0; i < nNumberOfRun; i++) {
+                         if (getRndInteger(0,10000) < nWinningNumber){
+                              nCurLosingStreaks++;
+                              if(nCurLosingStreaks > nHighestLosingStreaks)
+                                   nHighestLosingStreaks = nCurLosingStreaks;
+                         } else {
+                              nCurLosingStreaks = 0;
+                         }
+          }
+
+          document.getElementById("nHighestLosingStreaks").value = nHighestLosingStreaks;
+     }
+    
+     function getRndInteger(min, max) {
+          return Math.floor(Math.random() * (max - min) ) + min;
+     }
+</script>
